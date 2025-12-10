@@ -42,7 +42,7 @@ const AdminContextProvider = (props) => {
 
     const getAllAppointments = async () => {
         try {
-            const {data} = await axios.post("http://localhost:4000/api/admin/appointments",{},{headers:{atoken}})
+            const {data} = await axios.post(backendurl + "/api/admin/appointments",{},{headers:{atoken}})
             // console.log(data.appointments)
             // console.log(data.appointments)
             if(data.success){
@@ -65,7 +65,7 @@ const AdminContextProvider = (props) => {
 
         const cancelAppointment = async (appointmentId) => {
             try {
-                const {data} = await axios.post("http://localhost:4000/api/admin/cancel-appointment",{appointmentId},{headers:{atoken}})
+                const {data} = await axios.post(backendurl + "/api/admin/cancel-appointment",{appointmentId},{headers:{atoken}})
                 if (data.success) {
                     toast.success(data.message)
                     getAllAppointments()
@@ -79,7 +79,7 @@ const AdminContextProvider = (props) => {
 
         const getDashData = async() => {
             try {
-                const {data} = await axios.get("http://localhost:4000/api/admin/dashboard",{headers:{atoken}})
+                const {data} = await axios.get(backendurl + "/api/admin/dashboard",{headers:{atoken}})
                 if(data.success){
                     setDashData((Data) => [...Data, data.dashData])
                     // console.log(dashData)

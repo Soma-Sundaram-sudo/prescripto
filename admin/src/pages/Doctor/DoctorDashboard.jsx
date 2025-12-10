@@ -49,7 +49,7 @@ const DoctorDashboard = () => {
         </div>
         <div className='pt-4 border border-t-0'>
           {
-            dashdata.latestAppointments.map((item,index)=>(
+            dashdata?.latestAppointments?.map((item,index)=>(
               <div className='flex items-center px-6 py-3 gap-3 hover:bg-gray-100' key={index}>
                 <img className='rounded-full w-10' src={item.userData.image}/>
                 <div className='flex-1 text-sm'>

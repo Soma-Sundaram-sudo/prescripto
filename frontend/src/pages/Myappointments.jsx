@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 const Myappointments = () => {
-  const { token,listAppointment} = useContext(Appcontext)
+  const { token,listAppointment,backendurl} = useContext(Appcontext)
   const [appointment, setAppointment] = useState([])
   const months = ["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
 
@@ -15,7 +15,7 @@ const Myappointments = () => {
   const navigate = useNavigate()
   const AppointmentList = async () => {
     try {
-      const { data } = await axios.get("http://localhost:4000/api/user/appointments", { headers: { token } })
+      const { data } = await axios.get(backendurl + "/api/user/appointments", { headers: { token } })
 
       if (data.success) {
         setAppointment((Data) => [...Data, data.appointments.reverse()])
@@ -30,7 +30,7 @@ const Myappointments = () => {
 
   const cancelAppointment = async(appointmentId) => {
     try {
-      const {data} = await axios.post("http://localhost:4000/api/user/cancel-appointment",{appointmentId}, { headers: { token } })
+      const {data} = await axios.post(backendurl + "/api/user/cancel-appointment",{appointmentId}, { headers: { token } })
       if(data.success){
         toast.success(data.message)
         AppointmentList()
@@ -57,7 +57,7 @@ const Myappointments = () => {
         console.log(response)
 
         try {
-          const {data} = await axios.post("http://localhost:4000/api/user/verifyRazorpay",response,{headers:{token}})
+          const {data} = await axios.post(backendurl +"/api/user/verifyRazorpay",response,{headers:{token}})
           if(data.success){
             AppointmentList()
             navigate("/my-appointments")
@@ -75,7 +75,7 @@ const Myappointments = () => {
 
   const appointmentRazorpay = async (appointmentId) =>{
     try {
-      const {data} = await axios.post("http://localhost:4000/api/user/payment-razorpay",{appointmentId},{headers:{token}})
+      const {data} = await axios.post(backendurl + "/api/user/payment-razorpay",{appointmentId},{headers:{token}})
       if (data.success) {
         initpay(data.order)
       }

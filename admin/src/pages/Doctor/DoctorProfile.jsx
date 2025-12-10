@@ -8,6 +8,7 @@ const DoctorProfile = () => {
 
   const {dtoken,profile,setProfile,getProfileData} = useContext(Doctorcontext)
   const {currency} = useContext(Appcontext)
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const[isedit,setIsedit] = useState(false)
 
@@ -19,7 +20,7 @@ const DoctorProfile = () => {
         avaialable:profile.avaialable
       }
 
-      const {data} = await axios.post("http://localhost:4000/api/doctor/update-profile",updateData,{headers:{dtoken}})
+      const {data} = await axios.post(backendUrl + "/api/doctor/update-profile",updateData,{headers:{dtoken}})
       if(data.success){
         toast.success(data.message)
         setIsedit(false)
@@ -63,8 +64,8 @@ const DoctorProfile = () => {
           <div className='flex gap-2 py-2'>
             <p>Address :</p>
             <p className='text-sm'>
-              {isedit ? <input type='text' onChange={(e) => setProfile(prev => ({...prev,address:{...prev.address,line1:e.target.value}}))} value={profile.address.line1}/>:profile.address.line1}<br/>
-              {isedit ? <input type='text' onChange={(e) => setProfile(prev => ({...prev,address:{...prev.address,line2:e.target.value}}))} value={profile.address.line2}/>:profile.address.line2}
+              {isedit ? <input type='text' onChange={(e) => setProfile(prev => ({...prev,address:{...prev.address,line1:e.target.value}}))} value={profile?.address?.line1 || ""}/>:profile?.address?.line1}<br/>
+              {isedit ? <input type='text' onChange={(e) => setProfile(prev => ({...prev,address:{...prev.address,line2:e.target.value}}))} value={profile?.address?.line2 || ""}/>:profile?.address?.line2}
             </p>
           </div>
 
