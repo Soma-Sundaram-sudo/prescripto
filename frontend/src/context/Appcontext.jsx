@@ -8,7 +8,8 @@ import { toast } from 'react-toastify'
 const Appcontextprovider = (props) => {
 
     const currencySymbols = "$";
-    const backendurl = import.meta.env.VITE_BACKRND_URL || "http://localhost:4000"
+    const backendurl = import.meta.env.VITE_BACKRED_URL ;
+    console.log(backendurl);
     const [doctors, setDoctors] = useState([])
     const [token, setToken] = useState(localStorage.getItem("token") ? localStorage.getItem("token") : false)
     const [userData, setUserData] = useState(false)
