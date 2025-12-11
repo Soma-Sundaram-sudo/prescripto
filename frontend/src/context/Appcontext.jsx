@@ -8,7 +8,7 @@ import { toast } from 'react-toastify'
 const Appcontextprovider = (props) => {
 
     const currencySymbols = "$";
-    const backendurl = import.meta.env.VITE_BACKRED_URL ;
+    const backendurl = "https://prescripto-backend-wheat.vercel.app";
     console.log(backendurl);
     const [doctors, setDoctors] = useState([])
     const [token, setToken] = useState(localStorage.getItem("token") ? localStorage.getItem("token") : false)
