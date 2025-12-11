@@ -43,12 +43,11 @@ const AdminContextProvider = (props) => {
     const getAllAppointments = async () => {
         try {
             const {data} = await axios.post(backendurl + "/api/admin/appointments",{},{headers:{atoken}})
-            // console.log(data.appointments)
-            // console.log(data.appointments)
+
             if(data.success){
                 // setAppointments((Data) => [...Data, data.appointments])
                 setAppointment((Data) => [...Data, data.appointments])
-                // console.log(appointment)
+
             }else{
                 toast.error(data.message)
             }
@@ -60,7 +59,7 @@ const AdminContextProvider = (props) => {
     useEffect(()=>{
         if(atoken){
           getAllAppointments()
-        // console.log(appointment)
+  
         }},[atoken])
 
         const cancelAppointment = async (appointmentId) => {
@@ -82,7 +81,7 @@ const AdminContextProvider = (props) => {
                 const {data} = await axios.get(backendurl + "/api/admin/dashboard",{headers:{atoken}})
                 if(data.success){
                     setDashData((Data) => [...Data, data.dashData])
-                    // console.log(dashData)
+
                 }else{
                     toast.error(data.message)
                 }
@@ -94,7 +93,7 @@ const AdminContextProvider = (props) => {
         useEffect(() => {
             if(atoken){
               getDashData()
-            //   console.log(dashData)
+         
             }
           },[atoken])
 

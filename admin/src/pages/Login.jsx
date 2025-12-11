@@ -31,7 +31,7 @@ const Login = () => {
                 if (data.success) {
                     localStorage.setItem("dtoken",data.token)
                     setDtoken(data.token)
-                    console.log(data.token)
+        
                 }else{
                     toast.error(data.message)
                 }

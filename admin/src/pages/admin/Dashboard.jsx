@@ -7,9 +7,9 @@ const Dashboard = () => {
 
   const {atoken,getDashData,cancelAppointment,dashData} = useContext(Admincontext)
   const {slotDateFormat} = useContext(Appcontext)
-  // console.log(dashData)
+
    const dashdata = dashData.length>0 ? dashData[0]:[]
-  //  console.log(dashdata)
+
   return dashdata && (
     <div className='m-5'>
       <div className='flex flex-wrap gap-3'>

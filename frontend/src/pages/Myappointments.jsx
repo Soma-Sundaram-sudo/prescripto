@@ -19,7 +19,7 @@ const Myappointments = () => {
 
       if (data.success) {
         setAppointment((Data) => [...Data, data.appointments.reverse()])
-        console.log(appointment)
+      
       }
 
     } catch (error) {
@@ -54,7 +54,7 @@ const Myappointments = () => {
       order_id:order.id,
       receipt:order.receipt,
       handler: async (response) => {
-        console.log(response)
+     
 
         try {
           const {data} = await axios.post(backendurl +"/api/user/verifyRazorpay",response,{headers:{token}})

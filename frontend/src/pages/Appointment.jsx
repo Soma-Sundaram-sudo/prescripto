@@ -54,10 +54,10 @@ const Appointment = () => {
 
         let slotDate = day + "_" + month + "_" + year
         let slottime = formattedtime 
-        // console.log(docInfo);
+   
         
         const isSlotAvailable = docInfo.slots_booked[slotDate] && docInfo.slots_booked[slotDate].includes(slottime) ? false : true;
-        // console.log(isSlotAvailable);
+
         
         if (isSlotAvailable) {
           timeslots.push({
@@ -111,7 +111,7 @@ const Appointment = () => {
   },[docInfo])
 
   useEffect(()=>{
-    // console.log(docslots);
+  
   },[docslots])
 
 

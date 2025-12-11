@@ -14,7 +14,6 @@ const AppContextProvider = (props) => {
         console.log('birthdate',birthDate);
         
         let age = today.getFullYear() - birthDate.getFullYear()
-        // console.log(age,today,birthDate,dob)
         return age
     }
 

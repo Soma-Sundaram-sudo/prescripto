@@ -26,7 +26,6 @@ const Myprofile = () => {
 
 
       image && formData.append("image",image)
-      console.log([...formData.entries()]);
       const {data} = await axios.post(backendurl + "/api/user/update-profile",formData,{headers:{token}})
       
       if(data.success){
