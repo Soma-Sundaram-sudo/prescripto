@@ -9,7 +9,6 @@ const Appcontextprovider = (props) => {
 
     const currencySymbols = "$";
     const backendurl = import.meta.env.VITE_BACKRND_URL || "http://localhost:4000"
-    
     const [doctors, setDoctors] = useState([])
     const [token, setToken] = useState(localStorage.getItem("token") ? localStorage.getItem("token") : false)
     const [userData, setUserData] = useState(false)
@@ -17,7 +16,7 @@ const Appcontextprovider = (props) => {
 
     const getDoctorsData = async () => {
         try {
-            const { data } = await axios.get(backendurl + "/api/doctor/list")
+            const { data } = await axios.get("https://prescripto-backend-wheat.vercel.app/api/doctor/list")
             if (data.success) {
                 setDoctors(data.doctors)
             }
@@ -34,7 +33,7 @@ const Appcontextprovider = (props) => {
 
     const loadUserProfileData = async () => {
         try {
-            const { data } = await axios.get(backendurl + "/api/user/get-profile", { headers: { token } })
+            const { data } = await axios.get("https://prescripto-backend-wheat.vercel.app/api/user/get-profile", { headers: { token } })
             if (data.success) {
                 setUserData(data.userData)
                
