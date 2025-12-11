@@ -11,7 +11,10 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 app.use(express.json());
-app.use(cors())
+app.use(cors({
+    origin: ["https://prescripto-frontend-psi-eight.vercel.app"],  
+    credentials: true
+}));
 
 connectDB();
 connectcloudinary();
