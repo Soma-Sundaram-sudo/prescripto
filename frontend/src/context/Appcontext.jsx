@@ -8,7 +8,7 @@ import { toast } from 'react-toastify'
 const Appcontextprovider = (props) => {
 
     const currencySymbols = "$";
-    const backendurl = import.meta.env.VITE_BACKRND_URL || "http://localhost:4000"
+    const backendurl = import.meta.env.VITE_BACKRND_URL 
     
     const [doctors, setDoctors] = useState([])
     const [token, setToken] = useState(localStorage.getItem("token") ? localStorage.getItem("token") : false)
@@ -17,7 +17,7 @@ const Appcontextprovider = (props) => {
 
     const getDoctorsData = async () => {
         try {
-            const { data } = await axios.get(backendurl + "/api/doctor/list")
+            const { data } = await axios.get("https://prescripto-backend-wheat.vercel.app/api/doctor/list")
             if (data.success) {
                 setDoctors(data.doctors)
             }
